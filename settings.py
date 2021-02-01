@@ -47,11 +47,10 @@ else:
 
 log.basicConfig(level=CONFIG.LOG_LEVEL)
 
-MESSGAE_TEMPLATE = '''
-    账号昵称: [{nick}]
-    签到积分: {checkin_score}
-    签到结果: {message}
-    手机签到: {mobile_checkin}
-    签到时间: {today}'''
+MESSGAE_TEMPLATE = '''账号昵称: {nick}
+签到积分: {checkin_score}
+签到结果: {message}
+手机签到: {mobile_checkin}
+签到时间: {today}'''
 
 CONFIG.MESSGAE_TEMPLATE = MESSGAE_TEMPLATE
