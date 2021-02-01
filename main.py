@@ -42,17 +42,17 @@ def decode_json_str(s):
 
 def notify(title, message):
     if not CONFIG.SCKEY:
-        log.info('未配置SCKEY,正在跳过推送')
+        log.info('未配置token,正在跳过推送')
         return
 
     log.info('准备推送通知...')
-    url = 'https://sc.ftqq.com/{}.send'.format(CONFIG.SCKEY)
-    payload = {'text': '{}'.format(title), 'desp': message}
+    url = 'http://pushplus.hxtrip.com/send'#'https://sc.ftqq.com/{}.send'.format(CONFIG.SCKEY)
+    payload = {'token': '{}'.format(CONFIG.SCKEY),'title': '{}'.format(title), 'content': message}
 
     response = to_python(requests.post(url, data=payload).text)
 
-    errmsg = response['errmsg']
-    if errmsg == 'success':
+    code = response['code']
+    if code == 200:
         log.info('推送成功')
     else:
         log.error('{}: {}'.format('推送失败', errmsg))
