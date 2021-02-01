@@ -50,7 +50,6 @@ log.basicConfig(level=CONFIG.LOG_LEVEL)
 MESSGAE_TEMPLATE = '''昵称: {nick}
 积分: {checkin_score}
 结果: {message}
-手机: {mobile_checkin}
-时间: {today}'''
+手机: {mobile_checkin}'''
 
 CONFIG.MESSGAE_TEMPLATE = MESSGAE_TEMPLATE
