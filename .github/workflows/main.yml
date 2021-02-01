@@ -32,6 +32,17 @@ jobs:
       - name: Random sleep
         if: github.event_name == 'schedule'
         run: sleep $(shuf -i 10-300 -n 1)
+      
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pip
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
 
       - name: Run sign
         run: |
